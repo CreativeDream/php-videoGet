@@ -1,7 +1,7 @@
 php-videoGet
 ============
 
-Get information about video by URL from OpenGraph meta tags, like facebook.
+Simple PHP script wich will get information about video by URL(from OpenGraph meta tags, like facebook). Now you can get videos Information from Youtube, Vimeo, Vkontakte, Coub, DailyMotion, MetaCafe, Rutube and many others...
 
 __<a href="http://creativedream.net/plugins/php-video-get/" target="_blank">Demo Page</a>__
 
