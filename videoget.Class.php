@@ -5,7 +5,7 @@
    #  Author:    CreativeDream.net
    #  Version:	 1.0
    #  Date:      22-Jun-2013
-   #  Purpose:   Get information about video by URL in OpenGraph meta tags or by <iframe>, <object> elements
+   #  Purpose:   Get information about video by URL from OpenGraph meta tags or by <iframe>, <object> elements
    #  Requires : Requires PHP 4 >= 4.1.0.
    #  Usage Example:
    #                  include("classes/videoget.Class.php");
