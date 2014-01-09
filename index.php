@@ -11,7 +11,7 @@
     include("videoget.Class.php");
 	
     $url = "http://www.youtube.com/watch?v=T6DJcgm3wNY";
-	#$url = '<iframe width="560" height="315" src="http://www.youtube.com/embed/T6DJcgm3wNY?rel=0" frameborder="0" allowfullscreen></iframe>';
+    #$url = '<iframe width="560" height="315" src="http://www.youtube.com/embed/T6DJcgm3wNY?rel=0" frameborder="0" allowfullscreen></iframe>';
 
     $video = new videoGet($url);
 	
