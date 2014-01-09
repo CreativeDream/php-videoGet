@@ -1,4 +1,4 @@
-php-videoget
+php-videoGet
 ============
 
 Get information about video by URL from OpenGraph meta tags, like facebook.
