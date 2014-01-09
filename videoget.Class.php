@@ -9,24 +9,23 @@
    #  Requires : Requires PHP 4 >= 4.1.0.
    #  Usage Example:
    #                  include("classes/videoget.Class.php");
-   #                  $video = new videoGet( string $url );
-   #                  $video->get = array('title','description','image','video','url','site_name');
-   #                  $video->defaultImg = "./images/icons/defaultImg.jpg";
-   #                  $video = $video->getVideoData();
+   #                  $video = new videoGet( string $url, array $get );
+   #                           $url - URL from website with video, website must have OpenGraph meta tags; $url can also be <iframe> or <object> LINE: 50
+   #                           $get - array with OpenGraph meta tags property value og:(name)
    #
    # ========================================================================#
    
    class videoGet {
 	  public $get = array('title','description','image','video','url','site_name'); //what we should get
 	  public $defaultImg = "./images/icons/defaultImg.jpg"; //default thumbnail, if original is empty
-	  //DO NOT CHANGE INFORMATION BELLOW!
+	  //DO NOT CHANGE INFORMATION UNDER!
 	  private $video;
 	  private $VideoData = array();
 	  
 	  function __construct($url){
-		  if(!filter_var($url, FILTER_VALIDATE_URL) && strpos($url, "<iframe") === false && strpos($url, "<object") === false){return FALSE;}
-		  $this->video = $url;
-  	  }
+			if(!filter_var($url, FILTER_VALIDATE_URL) && strpos($url, "<iframe") === false && strpos($url, "<object") === false){return FALSE;}
+			$this->video = $url;
+	  }
 	  
 	  private function pasreVideoURL(){
 		 $this->video = (substr($this->video,-2) == '#!')?substr($this->video,0,-2):$this->video;
@@ -43,6 +42,8 @@
 		  $element = $this->video;
 		  $url = preg_match('/src="(.*?)"/',$this->video,$matches);
 		  if($url == FALSE){return FALSE;}
+		  
+		  //make for custom website
 		  if(strstr($matches[1], "youtube.com")){
 			  $this->video = 'http://www.youtube.com/watch?v=' . substr(strrchr($matches[1], "/"),1);
 			  return true;
@@ -80,7 +81,6 @@
 		  }
 		  $dom = NULL;
 	  }
-	  
 	  public function getVideoData(){
 		  $this->pasreVideoURL();
 		  return $this->VideoData;
