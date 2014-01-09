@@ -10,7 +10,7 @@
    #  Usage Example:
    #                  include("classes/videoget.Class.php");
    #                  $video = new videoGet( string $url, array $get );
-   #                           $url - URL from website with video, website must have OpenGraph meta tags; $url can also be <iframe> or <object> LINE: 50
+   #                           $url - URL from website with video, website must have OpenGraph meta tags; $url can also be <iframe> or <object> LINE: 46
    #                           $get - array with OpenGraph meta tags property value og:(name)
    #
    # ========================================================================#
@@ -40,7 +40,7 @@
 	  
 	  private function elementVideoGet(){
 		  $element = $this->video;
-		  $url = preg_match('/src="(.*?)"/',$this->video,$matches);
+		  $url = preg_match('/src="(.*?)"/',$this->video,$matches); //src data from <iframe> object
 		  if($url == FALSE){return FALSE;}
 		  
 		  //make for custom website
@@ -52,6 +52,12 @@
 			  $this->video = 'https://vimeo.com/' . substr(strrchr($matches[1], "/"),1);
 			  return true;
 		  }
+		  /*
+		  if(strstr($matches[1], "custom website")){
+			  $this->video = 'custom website url';
+			  return true;
+		  }
+		  */
 		  
 		  foreach($this->get as $tag){
 			  $this->VideoData[$tag] = '';
